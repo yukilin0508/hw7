@@ -1,0 +1,288 @@
+/*
+ * HW07：台中公園報導之外部樣式表。
+ * 檔案位置：css/hw07.css；使用小寫英文與 .css 副檔名，名稱不含空白。
+ * 原則：沿用 HW06 的屬性值與規則順序，只改變 CSS 的存放位置。
+ * HTML 負責內容與語意，此外部 CSS 負責外觀；本檔不放 HTML 標籤。
+ *
+ * 相對路徑必讀：
+ * 1. HW07_D1382724.html 位於專案根目錄，以 href="css/hw07.css" 載入本檔。
+ *    此 href 從 HTML 所在資料夾出發，先進 css，再讀取 hw07.css。
+ * 2. 若日後在本檔新增 url(...)，路徑則從 css/hw07.css 所在的 css 資料夾出發。
+ *    假設專案根目錄有 images/park.jpg，CSS 應寫 url("../images/park.jpg")。
+ *    ../ 先回到上一層根目錄，再進 images；不能照抄 HTML 的 images/park.jpg。
+ * 3. 本範例沒有 CSS 背景圖或外部字型，上述圖片路徑只是說明，不會發出請求。
+ * 4. 網址與檔名注意大小寫；使用 / 分層，不用 Windows 的反斜線。
+ * 5. css 資料夾必須與 HTML 一起搬移、壓縮或上傳，才能保留相對關係。
+ *
+ * CSS 註解使用斜線與星號包住；每個宣告以分號結尾，縮排為四個空格。
+ * 元素選擇器設定共用外觀；.類別設定可重用外觀；#tips 對應唯一 id。
+ */
+
+/* 1. 盒子尺寸與全頁文字：border-box 讓寬度包含內距與框線。 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+    font-size: 17px;
+    line-height: 1.85;
+    color: #263d35;
+    background-color: #f2f4ed;
+}
+
+/* 2. 頁首：背景、框線、圓角與內距共同建立報導的視覺層次。 */
+header {
+    padding: 34px 36px;
+    background-color: #18173f;
+    color: #fffdf5;
+    border-top: 6px solid #c89d56;
+    border-radius: 6px;
+}
+
+h1 {
+    margin: 0 0 16px;
+    font-size: 2rem;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+}
+
+header p {
+    margin: 10px 0;
+}
+
+small {
+    font-size: 0.85em;
+    font-style: normal;
+}
+
+/* 3. 導覽與連結：inline-block 讓連結可設定完整的點選內距。 */
+nav {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background-color: #e6ecdf;
+    border: 1px solid #cbd5c4;
+    border-radius: 6px;
+}
+
+nav h2 {
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 4px 6px 4px 0;
+}
+
+nav a {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #fffdf8;
+    border: 1px solid #cbd5c4;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+a {
+    color: #24285c;
+    text-underline-offset: 4px;
+    overflow-wrap: anywhere;
+}
+
+/* 虛擬類別 :hover 表示滑鼠移入；:focus-visible 提供鍵盤焦點提示。 */
+a:hover {
+    color: #78291b;
+    text-decoration: underline;
+}
+
+a:focus-visible, summary:focus-visible {
+    outline: 3px solid #b36f38;
+    outline-offset: 4px;
+}
+
+/* 4. 文章章節與盒子模型：margin 為外距，padding 為內距。 */
+section, aside {
+    margin: 24px 0;
+    padding: 24px 28px;
+    background-color: #fffdf8;
+    border: 1px solid #d9dfd2;
+    border-radius: 6px;
+}
+
+h2 {
+    margin: 0 0 18px;
+    padding-left: 12px;
+    border-left: 4px solid #545776;
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+h3 {
+    margin: 22px 0 10px;
+    font-size: 1.1rem;
+}
+
+p {
+    margin: 12px 0;
+}
+
+ul, ol {
+    padding-left: 1.6em;
+}
+
+li {
+    margin: 8px 0;
+}
+
+hr {
+    margin: 26px 0;
+    border: 0;
+    border-top: 1px solid #ccd5c6;
+}
+
+/* 5. 表格：以 CSS 框線取代 HW05 的 border="1"。 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    overflow-wrap: anywhere;
+}
+
+caption {
+    margin-bottom: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #becdbb;
+    text-align: left;
+    vertical-align: top;
+}
+
+thead {
+    background-color: #e1e9db;
+}
+
+tbody th {
+    background-color: #f0f3e9;
+}
+
+/* 6. 圖片與嵌入媒體：類別區分影片比例與地圖高度。 */
+figure {
+    margin: 18px 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+figcaption {
+    margin-top: 10px;
+    color: #565363;
+    font-size: 0.85em;
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+    border: 0;
+    border-radius: 4px;
+}
+
+.video-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.map-frame {
+    width: 100%;
+    height: 340px;
+}
+
+/* 7. ID 選擇器只設定這個補充區；aside 仍保留原有語意。 */
+#tips {
+    background-color: #edf0dd;
+    border-left: 5px solid #947359;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 32px;
+    padding: 20px 0;
+    border-top: 2px solid #555476;
+    color: #555363;
+    text-align: center;
+}
+
+/* 8. 窄視窗只縮小留白與字級，所有 CSS 均集中在此外部樣式表。 */
+@media (max-width: 600px) {
+    body {
+        padding: 16px 12px;
+        font-size: 16px;
+    }
+
+    header, nav, section, aside {
+        padding: 20px 16px;
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+/* 9. 將 HW06 的三處行內樣式改成類別，完整保留各宣告值。
+ * 這些規則置於共用規則之後；類別的權重高於 small、p 等元素選擇器。
+ * 不使用 !important，也不保留 HTML 的 style 屬性。
+ */
+
+/* 原 mark 的行內樣式：保留金色閱讀焦點、深色字與內距。
+ * HTML 寫 class="reading-focus"，CSS 選擇器則在名稱前加句點。
+ */
+.reading-focus {
+    background-color: #f6c19d;
+    color: #3e241c;
+    padding: 2px 6px;
+}
+
+/* 原散步建議段落的行內樣式：只標記此段，不改變所有 p。 */
+.route-note {
+    border-left: 4px solid #b35538;
+    padding-left: 14px;
+}
+
+/* 原資料整理聲明的行內樣式：覆蓋 small 的 font-style: normal。
+ * 類別權重較高，故此處為斜體，其他 small 繼續使用正常字體。
+ */
+.report-disclaimer {
+    font-style: italic;
+}
