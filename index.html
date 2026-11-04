@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!-- 宣告使用 HTML5；DOCTYPE 是文件類型宣告，不需要結束標籤。 -->
+<html lang="zh-Hant">
+<!-- html 包住整份文件；lang="zh-Hant" 表示主要使用繁體中文。 -->
+<head>
+    <!-- head 放網頁資訊；這些資訊不會直接成為頁面中的報導文字。 -->
+    <meta charset="UTF-8">
+    <!-- UTF-8 可正確處理中文；meta 是空元素，不寫結束標籤。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport 讓行動裝置使用裝置寬度；不代表固定寬度的圖片會自動縮小。 -->
+    <meta name="description" content="走進審計新村探索由老舊省府宿舍改建而成的熱門文創聚落透過景點清單、有框表格、照片、影片與 Google 地圖閱讀城市故事。">
+    <!-- description 提供網頁摘要；author 標示作者。 -->
+    <meta name="author" content="林芷緹">
+    <!-- robots 表達索引意圖；本機檔案不會因此自動被搜尋引擎收錄。 -->
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph 提供分享摘要，不是搜尋排名保證。 -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_TW">
+    meta property="og:title" content="台中景點報導｜審計新村">
+    <meta property="og:description" content="走進審計新村探索由老舊省府宿舍改建而成的熱門文創聚落，搭配景點表格、照片、影片及位置地圖。">
+    <meta property="og:image" content="https://scontent.ftpe21-1.fna.fbcdn.net/v/t1.6435-9/80397849_136140481165524_8474938887054032896_n.png?stp=dst-jpg_tt6&cstp=mx912x558&ctp=s912x558&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A_ZUisnxgt0Q7kNvwEUT0Dc&_nc_oc=AdpMtr4I1w0MRENZIdPdItPFp_e4v3_1UDm11hZjcCy_CxBxTsEfoOQFusC7bN34hsQ&_nc_zt=23&_nc_ht=scontent.ftpe21-1.fna&_nc_gid=Kf8ZvMtoAeo-9ERtRikMNw&_nc_ss=7b289&oh=00_AQPgIUc27CDzEQiAkkTRyxtc6SgbPr9OZ1uSeoBS-sswkg&oe=6AED21E8">
+    <meta property="og:image:alt" content="審計新村地圖">
+    <meta property="article:published_time" content="2026-10-07">
+    <meta property="article:modified_time" content="2026-10-21">
+    <!-- 正式上線後，再以真實公開網址加入 canonical 及 og:url；不要使用本機或虛構網址。 -->
+    <title>審計新村探索由老舊省府宿舍改建而成的熱門文創聚落｜HW06 CSS 樣式練習</title>
+    <!-- title 顯示在瀏覽器分頁；與 body 中的 h1 用途不同。 -->
+     <!--
+       HW07 方法三：以 link 元素載入外部 CSS，不在本頁保留 style 元素或行內 style。
+        rel="stylesheet" 表示此連結是樣式表；href 指定 CSS 檔案位置。
+        相對路徑 css/hw07.css：從本 HTML 所在資料夾出發，進入 css 子資料夾，再讀取 hw07.css。
+        ./css/hw07.css 也表示同樣位置；本頁採用較簡潔的 css/hw07.css。
+        不加開頭的 /，以免變成網站根目錄路徑；不寫本機絕對路徑或 file://。
+        HTML 與 css 資料夾一起搬移，且層級不變時，這條路徑仍然有效。
+        link 是空元素，不寫結束標籤；CSS 檔只放 CSS，不放 style 標籤。
+        若日後移動 HTML 到子資料夾，必須依新位置重新計算 href。
+    -->
+    <link rel="stylesheet" href="css/hw07.css">
+</head>
+
+    <style>
+        /* 1. 盒子尺寸與全頁文字：border-box 讓寬度包含內距與框線。 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            font-size: 17px;
+            line-height: 1.85;
+            color: #26263d;
+            background-color: #f2f4ed;
+        }
+
+        /* 2. 頁首：背景、框線、圓角與內距共同建立報導的視覺層次。 */
+        header {
+            padding: 34px 36px;
+            background-color: #162541;
+            color: #fffdf5;
+            border-top: 6px solid #c88056;
+            border-radius: 6px;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            font-size: 2rem;
+            line-height: 1.4;
+            letter-spacing: 0.04em;
+        }
+
+        header p {
+            margin: 10px 0;
+        }
+
+        small {
+            font-size: 0.85em;
+            font-style: normal;
+        }
+
+        /* 3. 導覽與連結：inline-block 讓連結可設定完整的點選內距。 */
+        nav {
+            margin: 24px 0;
+            padding: 20px 24px;
+            background-color: #e6ecdf;
+            border: 1px solid #cbd5c4;
+            border-radius: 6px;
+        }
+
+        nav h2 {
+            margin-top: 0;
+            padding: 0;
+            border: 0;
+            font-size: 1.1rem;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 4px 6px 4px 0;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #fffdf8;
+            border: 1px solid #cbd5c4;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        a {
+            color: #242c5c;
+            text-underline-offset: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        /* 虛擬類別 :hover 表示滑鼠移入；:focus-visible 提供鍵盤焦點提示。 */
+        a:hover {
+            color: #78351b;
+            text-decoration: underline;
+        }
+
+        a:focus-visible, summary:focus-visible {
+            outline: 3px solid #b37d38;
+            outline-offset: 4px;
+        }
+
+        /* 4. 文章章節與盒子模型：margin 為外距，padding 為內距。 */
+        section, aside {
+            margin: 24px 0;
+            padding: 24px 28px;
+            background-color: #fffdf8;
+            border: 1px solid #d9dfd2;
+            border-radius: 6px;
+        }
+
+        h2 {
+            margin: 0 0 18px;
+            padding-left: 12px;
+            border-left: 4px solid #545d76;
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+
+        h3 {
+            margin: 22px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin: 12px 0;
+        }
+
+        ul, ol {
+            padding-left: 1.6em;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        hr {
+            margin: 26px 0;
+            border: 0;
+            border-top: 1px solid #ccd5c6;
+        }
+
+        /* 5. 表格：以 CSS 框線取代 HW05 的 border="1"。 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+            overflow-wrap: anywhere;
+        }
+
+        caption {
+            margin-bottom: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #becdbb;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        thead {
+            background-color: #e1e9db;
+        }
+
+        tbody th {
+            background-color: #f0f3e9;
+        }
+
+        /* 6. 圖片與嵌入媒體：類別區分影片比例與地圖高度。 */
+        figure {
+            margin: 18px 0;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        figcaption {
+            margin-top: 10px;
+            color: #535863;
+            font-size: 0.85em;
+        }
+
+        iframe {
+            display: block;
+            max-width: 100%;
+            border: 0;
+            border-radius: 4px;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 340px;
+        }
+
+        /* 7. ID 選擇器只設定這個補充區；aside 仍保留原有語意。 */
+        #tips {
+            background-color: #edf0dd;
+            border-left: 5px solid #947559;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 32px;
+            padding: 20px 0;
+            border-top: 2px solid #545976;
+            color: #555363;
+            text-align: center;
+        }
+
+        /* 8. 窄視窗只縮小留白與字級，所有 CSS 仍在同一個 style 元素。 */
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px;
+                font-size: 16px;
+            }
+
+            header, nav, section, aside {
+                padding: 20px 16px;
+            }
+
+            h1 {
+                font-size: 1.65rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  <body>
+    <!--
+        第七次作業：一頁式台中公園報導。
+        本範例延續 HW06 的 HTML 語意結構與視覺樣式，練習分離內容與外觀。
+        共用規則與原本三處行內樣式都移入 css/hw07.css。
+        HTML 只以 class 指定個別樣式，不含行內 style 或 style 元素。
+        所有自寫 CSS 經由 head 的 link 相對路徑載入，不使用 @import、框架或自寫 JavaScript。
+        YouTube 與 Google 地圖是外部服務，服務內部可能使用自己的 CSS 與 JavaScript。
+        語意元素描述內容用途；本次的視覺外觀由 CSS 決定。
+        註解使用「小於符號、驚嘆號、兩個連字號」開始，並以兩個連字號及大於符號結束。
+        註解不會顯示於網頁，但讀者可從原始碼看見，因此不要放私人資料。
+        使用一致的四個空格縮排；成對標籤都明確寫出結束標籤。
+    -->
+
+    <!-- header 是頁首；id="top" 是下方「回到頁首」連結的目的地。 -->
+    <header id="top">
+        <!-- h1 是本頁主標題；h2 用於各章節，依內容階層選用標題。 -->
+        <h1>審計新村探索由老舊省府宿舍改建而成的熱門文創聚落</h1>
+         <p><small>體驗眷村，走進文創市集。</small></p>
+        <p><strong>>體驗眷村，走進文創市集，一起閱讀台中的城市記憶。</strong></p>
+        <!-- 方法一（1/3）：行內 style 只設定這個 mark 的背景、文字顏色與內距。 -->
+        <p>本期焦點：<mark style="background-color: #f6df9d; color: #3e351c; padding: 2px 6px;">百年歷史與湖畔風景</mark>，從景點報導延伸到位置地圖。</p>
+        <!-- time 的 datetime 以標準日期格式提供機器可讀的日期。 -->
+        <p>作者：林芷緹｜報導整理日期：<time datetime="2026-10-07">2026 年 10 月 14 日</time></p>
+        <!-- 方法一（3/3）：共用的 small 為正常字體，這一處另用行內樣式改為斜體。 -->
+         <p><small style="font-style: italic;">本文為資料整理型教學報導，非現場採訪紀錄。</small></p>
+    </header>
+
+    <!-- nav 表示導覽區；href="#名稱" 會跳到本頁相同 id 的元素。 -->
+    <nav aria-label="報導目錄">
+        <h2>報導目錄</h2>
+        <ul>
+            <li><a href="#intro">眷村歷史簡介</a></li>
+            <li><a href="#highlights">景點特色</a></li>
+            <li><a href="#table">商店比較表</a></li>
+            <li><a href="#photo">審計新村地圖</a></li>
+            <li><a href="#video">影音報導</a></li>
+            <li><a href="#sources">資料來源</a></li>
+        </ul>
+    </nav>
+
+    <!-- hr 表示內容主題的分隔，也是沒有結束標籤的空元素。 -->
+    <hr>
+
+        <!-- main 包住本頁主要內容；article 表示可獨立閱讀的完整報導。 -->
+    <!-- main 是本頁唯一的主要內容區，不能放入 nav、aside、header 或 footer 裡。 -->
+    <main id="main-content">
+         <!-- article 收納可獨立理解的報導；section 是這篇報導的主題章節。 -->
+        <article aria-label="審計新村專題報導">
+              <!-- section 將報導分成有標題的章節；同一頁中的 id 不可重複。 -->
+            <section id="intro">
+                <h2>一、眷村歷史簡介</h2>
+                <!-- p 表示段落；strong 強調重要資訊，不用來取代標題。 -->
+                <p>
+                    審計新村</strong>（現稱為「審計368新創聚落」）， 是台中市非常具有代表性的老屋活化成功案例。
+                    它不僅保留了半世紀前的時代痕跡，更成功轉型為充滿活力的文創與青年創業基地。
+                </p>
+                <p>
+                    與一般常見的一樓平房眷村不同，審計新村的建築物多為二層樓的</strong>矮建築，外牆漆著溫柔的</strong>鵝黃色。
+                    內部的空間格局雖然小巧，但相當精緻，完整反映了戰後初期政府官舍的混合式建築風格
+                    ，是具有歷史價值的公共建設。
+                </p>
+                <p>
+                    從湖心亭的建築到望月亭的歷史，台中公園像一份可以慢慢閱讀的城市筆記。
+                    本篇以景點整理與建議散步順序，介紹這座百年公園。
+                </p>
+                <!-- br 僅用於同段文字中需要的換行；不要用很多 br 製造間距。 -->
+                <p>地址：臺中市西區民生路368巷。<br>閱讀重點：歷史地標、文創市集。</p>
+            </section>
+
+            <section id="highlights">
+                <h2>二、景點特色</h2>
+                <h3>值得留意的三個特色</h3>
+                <!-- ul 是無序清單；li 是個別項目，適合不分先後的資訊。 -->
+                <ul>
+                    <li><strong>歷史建築：</strong>復古好拍的「鵝黃色老屋建築」</li>
+                    <li><strong>特色店家：</strong>充滿活力的「青年文創與特色小店」</li>
+                    <li><strong>隱藏市集：</strong>尋寶必逛的「暮暮市集」</li>
+                </ul>
+
+                <h3>商店類型</h3>
+                <p>店家種類繁多，主要可以分為「排隊甜點小吃」、「人氣咖啡輕食」以及「文創與生活風格」三大類</p>
+                <!-- ol 是有序清單；瀏覽器會依 li 的排列產生編號。 -->
+                <ol>
+                    <li>進必吃排隊甜點小吃</li>
+                    <li>人氣咖啡與輕食</li>
+                    <li>文創與生活風格店家</li>
+                </ol>
+            </section>
+
+            <section id="table">
+                <h2>三、商店比較表</h2>
+                <!--
+                   table 用於呈現資料，不用來排版整個網頁。
+                    延續 HW04 的需求，保留 border="1" 顯示表格與儲存格框線。
+                    border 是舊式呈現屬性，本作業因純 HTML 有框需求而保留。
+                    現代 HTML5 的樣式應改由 CSS 設定；本範例不加入 CSS。
+                    不使用表格來排版網頁，也不加入其他舊式外觀屬性。
+                -->
+                <table border="1">
+                    <!-- caption 是表格標題，放在 table 內最前面。 -->
+                    <caption>審計新村三種類型店家特色與觀察重點</caption>
+                    <!-- thead 包住表頭；tr 是一橫列；th 是標題儲存格。 -->
+                    <thead>
+                        <tr>
+                            <!-- scope="col" 表示這個 th 是整欄的標題。 -->
+                            <th scope="col">商品總類</th>
+                            <th scope="col">主要特色</th>
+                            <th scope="col">故事性</th>
+                        </tr>
+                    </thead>
+                    <!-- tbody 包住資料列；td 是一般資料儲存格。 -->
+                    <tbody>
+                        <tr>
+                            <!-- scope="row" 表示這個 th 是本列的標題。 -->
+                            <th scope="row">外帶甜點小吃(如:旅禾泡芙、魚刺人)</th>
+                            <td>視覺吸睛、方便邊走邊吃、單價親民。</td>
+                            <td>充滿青年微型創業的韌性</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">職人咖啡與輕食餐飲(如：創意咖啡、舒芙蕾鬆餅、天然杏仁茶)</th>
+                            <td>提供舒適內用座位與完整空間體驗</td>
+                            <td>台灣古早味在現代新創聚落中的文化傳承與創新翻轉</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">文創與生活風格選物(如：原創插畫明信片、在地植物香氛、特色果茶)</th>
+                            <td>強調原創設計與五感體驗（嗅覺、觸覺），適合尋找獨特伴手禮</td>
+                            <td>傳遞品牌與台灣土地的連結</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="photo">
+                <h2>四、審計新村地圖</h2>
+                <!-- figure 將圖片與圖說組成一個單位；figcaption 是圖說。 -->
+                <figure>
+                    <!--
+                        img 是空元素，不寫 /img 結束標籤。
+                        src 指定圖片網址；本範例使用外部圖片，需要連線才能載入。
+                        alt 描述照片內容，圖片未載入時或使用螢幕閱讀器時仍可理解。
+                         width 提供圖片尺寸資訊；CSS 的 max-width: 100% 與 height: auto 讓圖片在窄視窗縮小且保持比例。
+                    -->
+                    <img
+                        src="https://scontent.ftpe21-1.fna.fbcdn.net/v/t1.6435-9/80397849_136140481165524_8474938887054032896_n.png?stp=dst-jpg_tt6&cstp=mx912x558&ctp=s912x558&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A_ZUisnxgt0Q7kNvwEUT0Dc&_nc_oc=AdpMtr4I1w0MRENZIdPdItPFp_e4v3_1UDm11hZjcCy_CxBxTsEfoOQFusC7bN34hsQ&_nc_zt=23&_nc_ht=scontent.ftpe21-1.fna&_nc_gid=Kf8ZvMtoAeo-9ERtRikMNw&_nc_ss=7b289&oh=00_AQPgIUc27CDzEQiAkkTRyxtc6SgbPr9OZ1uSeoBS-sswkg&oe=6AED21E8"
+                        alt="審計新村地圖"
+                        width="480">
+                    <figcaption>
+                        此圖為審計新村的觀光地圖。
+                        圖片來源：<a href="https://scontent.ftpe21-1.fna.fbcdn.net/v/t1.6435-9/80397849_136140481165524_8474938887054032896_n.png?stp=dst-jpg_tt6&cstp=mx912x558&ctp=s912x558&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A_ZUisnxgt0Q7kNvwEUT0Dc&_nc_oc=AdpMtr4I1w0MRENZIdPdItPFp_e4v3_1UDm11hZjcCy_CxBxTsEfoOQFusC7bN34hsQ&_nc_zt=23&_nc_ht=scontent.ftpe21-1.fna&_nc_gid=Kf8ZvMtoAeo-9ERtRikMNw&_nc_ss=7b289&oh=00_AQPgIUc27CDzEQiAkkTRyxtc6SgbPr9OZ1uSeoBS-sswkg&oe=6AED21E8">交通部觀光署「臺中公園」景點頁</a>。
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="video">
+                <h2>五、影音報導</h2>
+                <p>透過下方影片認識審計新村，再比較影片畫面與本文介紹的景點。</p>
+                <!--
+                    iframe 嵌入 我是邵阿咩 的審計新村介紹影片。
+                    src 使用 /embed/影片ID，title 描述內容；allowfullscreen 允許全螢幕。
+                    strict-origin-when-cross-origin 讓 HTTP 預覽傳送來源資訊。
+                    請用「HW05_開啟預覽.command」或 Live Server 開啟；file:// 缺少來源時仍可能出現錯誤 153。
+                    更換影片不會解除 YouTube 的來源要求，因此須搭配正確預覽方式。
+                -->
+                </figure>
+                     <iframe
+                        class="video-frame"
+                        width="560"
+                        height="315"
+                        src="https://youtu.be/z_vQhG1XNUQ?si=FiEt2--TUAS-P3Fz"
+                        title="台中審計新村這樣逛！人氣滷味漢堡餐包咖啡！文創好店大集合！"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                     </iframe>
+                    <figcaption>影片：台中審計新村這樣逛！人氣滷味漢堡餐包咖啡！文創好店大集合！eating show｜大食い｜먹방｜mukbang｜eating｜吃播｜發布者：我是邵阿咩</figcaption>
+                </figure>
+                <p><a href="https://youtu.be/z_vQhG1XNUQ?si=F5d_XMkOM_o7vhQS" target="_blank" rel="noopener noreferrer">在 YouTube 觀看 我是邵阿咩 的審計新村介紹（另開分頁）</a></p>
+                <p><small>影片為外部作者發布的景點介紹，現場狀況請以最新官方資訊為準。</small></p>
+                <p><small>本機預覽請使用同資料夾的 <code>HW06_開啟預覽.command</code> 或 Live Server；若直接開啟 HTML 出現錯誤 153，請改用 HTTP 預覽或上方 YouTube 連結。</small></p>
+            </section>
+
+            <!-- 位置地圖是報導的主要資訊，因此用 section；iframe 嵌入外部地圖。 -->  
+              <section id="map">
+                <h2>六、位置地圖：找到審計新村</h2>
+                <p>台中公園位於台中市西區，地址為<strong>西區民生路368巷</strong>。
+                    下方地圖標示本文介紹的公園位置，方便讀者對照景點與周邊街道。</p>
+                <!--
+                    Google 地圖以座標定位，q 指定緯度 24.144818、經度 120.68447，output=embed 回傳嵌入版。
+                    網址的 & 在 HTML 中寫成 &amp;。不需在本教學檔放入 API 金鑰。
+                    title 說明地圖用途；loading="lazy" 延後載入較下方的外部內容。
+                    iframe 必須寫結束標籤；width 與 height 設定顯示尺寸。
+                    地圖需連網；另提供一般地圖連結，載入失敗時仍可開啟。
+                -->
+                <iframe
+                    src="https://maps.app.goo.gl/yRp27R1Lbz1aiKzeA"
+                    width="480"
+                    height="360"
+                    title="審計新村位置 Google 地圖"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+                <p><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.763869501039!2d120.66007972612627!3d24.144929378403262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693da1c316a1fb%3A0xb8b11e36e9d43bdf!2zNDAz6Ie65Lit5biC6KW_5Y2A5piH5bmz6YeM5a-p6KiI5paw5p2R!5e0!3m2!1szh-TW!2stw!4v1791947645411!5m2!1szh-TW!2stw" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟審計新村（另開分頁）</a></p>
+                <p><small>位置查詢由 Google 地圖提供；抵達後請確認入口。</small></p>   
+                </section>
+
+                 <hr>
+            <!--
+                aside 放與報導相關、但可獨立省略的補充資訊。
+                此處是走讀提醒，不用來取代主要景點介紹。
+                純 HTML 下會依文件順序顯示；aside 不會自動移到右側。
+            -->
+            <aside id="tips" aria-labelledby="tips-title">
+                <h2 id="tips-title">走讀小提醒</h2>
+                <!-- details 與 summary 提供瀏覽器原生收折功能，不需要自寫 JavaScript。 -->
+                <details open>
+                    <summary>出發前與走讀時，記得這三件事</summary>
+                    <ul>
+                        <li>攜帶飲用水，依天氣準備防曬或雨具。</li>
+                        <li>人潮眾多，請勿推擠。</li>
+                        <li>以文字或照片記錄觀察；若寫入報導，區分現場觀察與引用資料。</li>
+                    </ul>
+                </details>
+            </aside>
+
+
+            <section id="sources">
+                <h2>七、資料來源</h2>
+                <p>本報導依下列資料整理。</p>
+                <!--
+                    target="_blank" 另開分頁；rel 保護開啟新頁面的關聯。
+                    網址中的 & 在 HTML 原始碼中寫成 &amp;。
+                -->
+                <ul>
+                    <li><a href="https://travel.taichung.gov.tw/zh-tw/attractions/intro/1139">交通部觀光署：審計新村介紹</a></li>
+                    <li><a href="https://www.facebook.com/photo?fbid=136140477832191&set=a.479146757587981" target="_blank" rel="noopener noreferrer">美味專佳臉書(圖片來源)）</a></li>
+                    <li><a href="https://youtu.be/z_vQhG1XNUQ?si=FiEt2--TUAS-P3Fz" target="_blank" rel="noopener noreferrer">YouTube：審計新村介紹影片</a></li>
+                </ul>
+                <p><small>資料整理日期：2026 年 10 月 14 日。</small></p>
+            </section>
+        </article>
+    </main>
+
+    <hr>
+    <!-- footer 是頁尾；來源與作者標示應依自己的作品修改。 -->
+   <footer>
+        <p><strong>第六次 HTML 作業範例｜審計新村報導</strong></p>
+        <p><small>作者：林芷緹 課程示範作者 · 更新日期：2026 年 10 月 14 日</small></p>
+        <p><small>文字依來源整理；照片與影片權利屬原作者。本文為課堂示範。</small></p>
+        <p><a href="#top">回到頁首</a></p>
+    </footer>
+</body>
+</html>
